@@ -11,6 +11,30 @@
 @code {
     private int currentCount = 0;
 
+    protected override void OnParametersSet()
+    {
+        Console.WriteLine("* OnParametersSet");
+        base.OnParametersSet();
+    }
+
+    protected override void OnInitialized()
+    {
+        Console.WriteLine("* OnInitialized");
+        base.OnInitialized();
+    }
+
+    protected override void OnAfterRender(bool firstRender)
+    {
+        Console.WriteLine($"* OnAfterRender - First render: {firstRender}");
+        base.OnAfterRender(firstRender);
+    }
+
+    @* public override async Task SetParametersAsync(ParameterView parameters)
+    {
+        Console.WriteLine("* SetParametersAsync");
+        await Task.CompletedTask;
+    } *@
+
     private void IncrementCount()
     {
         currentCount++;
